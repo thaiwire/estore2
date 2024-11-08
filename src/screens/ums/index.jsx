@@ -6,15 +6,9 @@ import { useState } from "react";
 import DeleteConfirmationModal from "@/components/ui/DeleteConfirmationModal";
 import Link from "next/link";
 
-const Um = () => {
+const Um = ({ ums }) => {
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
   const [selectedId, setSelectedId] = useState(null);
-
-  const um = [
-    { id: 1, name: "Kg" },
-    { id: 2, name: "Ton" },
-    { id: 3, name: "Meter" },
-  ];
 
   const handleDelete = () => {};
   return (
@@ -39,16 +33,18 @@ const Um = () => {
             <tr>
               <th> Sr. No.</th>
               <th>UM</th>
+              <th>UM Name</th>
               <th>Action</th>
             </tr>
           </thead>
           <tbody className="text-gray-700 font-medium text-lg text-center">
-            {um.map((um, key) => (
+            {ums.map((um, key) => (
               <tr key={um.id}>
                 <td>{key + 1}</td>
-                <td>{um.name}</td>
+                <td>{um.umNum}</td>
+                <td>{um.umName}</td>
                 <td className="flex items-center gap-x-3">
-                  <Link href={`/users/edit/${um.id}`} className="w-fit">
+                  <Link href={`/ums/edit/${um.id}`} className="w-fit">
                     <EditIcon />
                   </Link>
                   <Button

@@ -1,10 +1,12 @@
 import Um from "@/screens/ums";
+import { getUms } from "@/actions/umsAction";
 
-const UmManager = () => {
+export default async function UmManager() {
+  const ums = await getUms();
+
   return (
     <div>
-      <Um />
+      <Um ums={ums} />
     </div>
   );
-};
-export default UmManager;
+}
